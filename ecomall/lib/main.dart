@@ -1,24 +1,18 @@
-import 'package:ecomall/pages/home/homepage.dart';
-import 'package:ecomall/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'pages/home/iniciopage.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends ConsumerWidget {
-  const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return Consumer(
-      builder: (context, watch, _) => MaterialApp(
-        theme: ref.watch(theme),
-        darkTheme: ref.watch(darkTheme),
-        themeMode: ref.watch(themeMode),
-        home: const HomeScreen(),
-      ),
-    );
+  Widget build(BuildContext context) {
+    return const InicioPage();
   }
 }
