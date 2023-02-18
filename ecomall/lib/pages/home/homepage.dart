@@ -1,20 +1,51 @@
+import 'package:ecomall/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../providers/theme_provider.dart';
-
 class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var darkMode = ref.watch(darkModeProvider);
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Title'),
+        title: const Text('bettercoding.dev – theming'),
       ),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 16),
+            Text(
+              'Welcome!',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'This is a tutorial about theming.',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            const Spacer(),
+            Image(
+              image: Theme.of(context).imageForName('logo.png'),
+              height: Theme.of(context).custom.imageSize,
+            ),
+            const Spacer(),
+            ElevatedButton(
+              child: const Text('Click me!'),
+              onPressed: () {
+                // final state = ref.watch(themeMode);
+                // ref.watch(themeMode) ==state== ThemeMode.light
+                //     ? ThemeMode.dark
+                //     : ThemeMode.light;
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
