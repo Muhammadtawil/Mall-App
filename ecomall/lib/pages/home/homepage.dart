@@ -1,4 +1,3 @@
-import 'package:ecomall/providers/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -29,10 +28,6 @@ class HomeScreen extends ConsumerWidget {
               style: Theme.of(context).textTheme.displayMedium,
             ),
             const Spacer(),
-            Image(
-              image: Theme.of(context).imageForName('logo.png'),
-              height: Theme.of(context).custom.imageSize,
-            ),
             const Spacer(),
             ElevatedButton(
               child: const Text('Click me!'),

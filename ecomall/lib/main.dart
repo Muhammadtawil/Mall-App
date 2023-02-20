@@ -1,18 +1,25 @@
+import 'package:ecomall/pages/home/iniciopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'pages/home/iniciopage.dart';
+import 'pages/home/home_screen.dart';
+import 'providers/app_theme_provider.dart';
+import 'utilis/theme/app_theme.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends ConsumerWidget {
+  const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return const InicioPage();
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp(
+      title: 'Flutter Light/Dark Theme',
+      debugShowCheckedModeBanner: false,
+      theme: getAppTheme(context, ref.watch(appThemeProvider)),
+      home: const InicioPage(),
+    );
   }
 }
