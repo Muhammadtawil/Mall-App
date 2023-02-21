@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../providers/app_theme_provider.dart';
 
 class AppDrawer extends StatefulWidget {
   final Widget child;
@@ -117,36 +120,50 @@ class _AppDrawerState extends State<AppDrawer>
   }
 }
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends ConsumerWidget {
   const CustomDrawer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    var isDarkMode = ref.watch(appThemeProvider);
     return Material(
-      color: const Color(0xff5956E9),
+      color: isDarkMode ? const Color(0xff5956E9) : Colors.greenAccent,
       child: SafeArea(
         child: Theme(
           data: ThemeData(
-            brightness: Brightness.dark,
+            brightness: Brightness.light,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            // color: isDarkMode ? Colors.white : Colors.amber,
+            child: ListView(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Stack(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerRight,
-                      padding: const EdgeInsets.only(right: 52, bottom: 30),
-                      child: const Image(
-                        image: AssetImage('assets/images/EllipseMorado.png'),
-                      ),
-                    )
-                  ],
+                // Stack(
+                //   children: [
+                //     Container(
+                //       alignment: Alignment.centerRight,
+                //       padding: const EdgeInsets.only(right: 52, bottom: 30),
+                //       child: const Image(
+                //         image: AssetImage('assets/images/EllipseMorado.png'),
+                //       ),
+                //     )
+                //   ],
+                // ),
+
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.1,
                 ),
-                const ListTile(
-                  leading: Icon(Icons.person_outline),
-                  title: Text('Profile'),
+                ListTile(
+                  leading: const Icon(Icons.person_outline),
+                  title: Text(
+                    'Profile',
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ),
                 const SizedBox(
                     width: 206,
@@ -208,19 +225,19 @@ class CustomDrawer extends StatelessWidget {
                   leading: Icon(Icons.settings_outlined),
                   title: Text('Settings'),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  child: const Image(
-                    image: AssetImage('assets/images/EllipseMorado.png'),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(left: 38, top: 17, bottom: 0),
-                  alignment: Alignment.centerLeft,
-                  child: const Image(
-                    image: AssetImage('assets/images/circulomoradorelleno.png'),
-                  ),
-                ),
+                // Container(
+                //   alignment: Alignment.center,
+                //   child: const Image(
+                //     image: AssetImage('assets/images/EllipseMorado.png'),
+                //   ),
+                // ),
+                // Container(
+                //   padding: const EdgeInsets.only(left: 38, top: 17, bottom: 0),
+                //   alignment: Alignment.centerLeft,
+                //   child: const Image(
+                //     image: AssetImage('assets/images/circulomoradorelleno.png'),
+                //   ),
+                // ),
                 const Padding(
                     padding: EdgeInsets.only(left: 10),
                     child: ListTile(
