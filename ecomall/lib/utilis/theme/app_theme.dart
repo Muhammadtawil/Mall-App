@@ -11,8 +11,9 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
         color3: isDarkTheme ? Colors.yellow : Colors.red,
       ),
     ],
-    scaffoldBackgroundColor:
-        isDarkTheme ? const Color.fromARGB(255, 41, 41, 41) : Colors.white,
+    scaffoldBackgroundColor: isDarkTheme
+        ? const Color.fromARGB(255, 41, 41, 41)
+        : const Color.fromARGB(255, 230, 230, 230),
     textTheme: Theme.of(context)
         .textTheme
         .copyWith(
@@ -30,8 +31,9 @@ ThemeData getAppTheme(BuildContext context, bool isDarkTheme) {
     listTileTheme: ListTileThemeData(
         iconColor: isDarkTheme ? Colors.orange : Colors.purple),
     appBarTheme: AppBarTheme(
-        backgroundColor:
-            isDarkTheme ? const Color.fromARGB(255, 41, 41, 41) : Colors.white,
+        backgroundColor: isDarkTheme
+            ? const Color.fromARGB(255, 41, 41, 41)
+            : const Color.fromARGB(255, 230, 230, 230),
         iconTheme: IconThemeData(
             color: isDarkTheme
                 ? Colors.white

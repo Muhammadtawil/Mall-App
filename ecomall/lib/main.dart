@@ -1,4 +1,3 @@
-import 'package:ecomall/pages/home/iniciopage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,7 +18,7 @@ class MyApp extends ConsumerWidget {
       title: 'Flutter Light/Dark Theme',
       debugShowCheckedModeBanner: false,
       theme: getAppTheme(context, ref.watch(appThemeProvider)),
-      home: const InicioPage(),
+      home: const MyHomePage(),
     );
   }
 }
