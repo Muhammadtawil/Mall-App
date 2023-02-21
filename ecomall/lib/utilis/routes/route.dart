@@ -1,12 +1,13 @@
+import 'package:ecomall/pages/home/home_screen.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../pages/home/homepage.dart';
+import '../../widgets/drawer.dart';
 
 Map<String, WidgetBuilder> getApplicationRoutes() {
   return <String, WidgetBuilder>{
-    '/': ((context) => const HomeScreen())
-    // '/': (BuildContext context) => const AppDrawer(child: HomeScreen()),
+    '/': (BuildContext context) => const AppDrawer(child: MyHomePage()),
     // 'splash': (BuildContext contex) => const Splash(),
     // 'auth': (BuildContext contex) => const Login(),
     // 'favorites': (BuildContext contex) => const NoFavorites(),
