@@ -17,12 +17,11 @@ class MyHomePage extends ConsumerWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: SystemUiOverlayStyle.light,
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           elevation: 0,
           leading: Consumer(
             builder: (context, ref, child) => IconButton(
                 onPressed: () {
-                  ref.read(drawerProvider.notifier).state;
                   AppDrawer.of(context)?.toggle();
                 },
                 icon: const Icon(
