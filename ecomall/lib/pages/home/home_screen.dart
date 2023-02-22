@@ -17,8 +17,15 @@ class MyHomePage extends ConsumerWidget {
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
         appBar: AppBar(
-          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          systemOverlayStyle: isDarkMode
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark,
           elevation: 0,
+          title: Text(
+            'Malleco',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          centerTitle: true,
           leading: Consumer(
             builder: (context, ref, child) => IconButton(
                 onPressed: () {

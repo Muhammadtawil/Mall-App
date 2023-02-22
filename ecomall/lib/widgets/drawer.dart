@@ -127,20 +127,19 @@ class CustomDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkMode = ref.watch(appThemeProvider);
-    return SingleChildScrollView(
-      child: Material(
-        color: isDarkMode
-            ? const Color.fromARGB(255, 88, 167, 153)
-            : Colors.greenAccent,
-        child: SafeArea(
-          child: Theme(
-            data: ThemeData(
-              brightness: Brightness.light,
-            ),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              // color: isDarkMode ? Colors.white : Colors.amber,
+    return Material(
+      color: isDarkMode
+          ? const Color.fromARGB(255, 88, 167, 153)
+          : Colors.greenAccent,
+      child: SafeArea(
+        child: Theme(
+          data: ThemeData(
+            brightness: Brightness.light,
+          ),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: SingleChildScrollView(
               child: ListView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -149,6 +148,27 @@ class CustomDrawer extends ConsumerWidget {
                 children: <Widget>[
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.1,
+                  ),
+                  ListTile(
+                    leading: CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.grey,
+                      child: Padding(
+                        padding: const EdgeInsets.all(1), // Border radius
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(60),
+                            child: Image.asset(
+                              "assets/ic_profile.jpeg",
+                              fit: BoxFit.fill,
+                              width: 120,
+                              height: 120,
+                            )),
+                      ),
+                    ),
+                    title: Text(
+                      'Muhammad Tawil ',
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
                   ),
                   CustomListTile(
                     tileIcon: const Icon(FontAwesomeIcons.userAstronaut),
