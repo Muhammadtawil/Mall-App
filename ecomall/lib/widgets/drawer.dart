@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../providers/app_theme_provider.dart';
 
@@ -126,129 +127,145 @@ class CustomDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkMode = ref.watch(appThemeProvider);
-    return Material(
-      color: isDarkMode ? const Color(0xff5956E9) : Colors.greenAccent,
-      child: SafeArea(
-        child: Theme(
-          data: ThemeData(
-            brightness: Brightness.light,
-          ),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            // color: isDarkMode ? Colors.white : Colors.amber,
-            child: ListView(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+    return SingleChildScrollView(
+      child: Material(
+        color: isDarkMode
+            ? const Color.fromARGB(255, 88, 167, 153)
+            : Colors.greenAccent,
+        child: SafeArea(
+          child: Theme(
+            data: ThemeData(
+              brightness: Brightness.light,
+            ),
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              // color: isDarkMode ? Colors.white : Colors.amber,
+              child: ListView(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
 
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                // Stack(
-                //   children: [
-                //     Container(
-                //       alignment: Alignment.centerRight,
-                //       padding: const EdgeInsets.only(right: 52, bottom: 30),
-                //       child: const Image(
-                //         image: AssetImage('assets/images/EllipseMorado.png'),
-                //       ),
-                //     )
-                //   ],
-                // ),
-
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
-                ListTile(
-                  leading: const Icon(Icons.person_outline),
-                  title: Text(
-                    'Profile',
-                    style: Theme.of(context).textTheme.titleLarge,
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.1,
                   ),
-                ),
-                const SizedBox(
-                    width: 206,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 74, right: 0),
-                      child: Divider(
-                        color: Color(0xfff4f4f8),
-                      ),
-                    )),
-                const ListTile(
-                  leading: Icon(Icons.shopping_cart_outlined),
-                  title: Text('My orders'),
-                ),
-                const SizedBox(
-                    width: 206,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 74, right: 0),
-                      child: Divider(
-                        color: Color(0xfff4f4f8),
-                      ),
-                    )),
-                const ListTile(
-                  leading: Icon(Icons.favorite_border_outlined),
-                  title: Text('Favorites'),
-                ),
-                const SizedBox(
-                    width: 206,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 74, right: 0),
-                      child: Divider(
-                        color: Color(0xfff4f4f8),
-                      ),
-                    )),
-                const ListTile(
-                  leading: Icon(Icons.shopping_bag_outlined),
-                  title: Text('Delivery'),
-                ),
-                const SizedBox(
-                    width: 206,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 74, right: 0),
-                      child: Divider(
-                        color: Color(0xfff4f4f8),
-                      ),
-                    )),
-                const ListTile(
-                  leading: Icon(Icons.shopify),
-                  title: Text('My Shops'),
-                ),
-                const SizedBox(
-                    width: 206,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 74, right: 0),
-                      child: Divider(
-                        color: Color(0xfff4f4f8),
-                      ),
-                    )),
-                const ListTile(
-                  leading: Icon(Icons.settings_outlined),
-                  title: Text('Settings'),
-                ),
-                // Container(
-                //   alignment: Alignment.center,
-                //   child: const Image(
-                //     image: AssetImage('assets/images/EllipseMorado.png'),
-                //   ),
-                // ),
-                // Container(
-                //   padding: const EdgeInsets.only(left: 38, top: 17, bottom: 0),
-                //   alignment: Alignment.centerLeft,
-                //   child: const Image(
-                //     image: AssetImage('assets/images/circulomoradorelleno.png'),
-                //   ),
-                // ),
-                const Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: ListTile(
-                      leading: Icon(Icons.logout),
-                      title: Text('Sign Out'),
-                    ))
-              ],
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.userAstronaut),
+                    tileText: 'Profile',
+                    tileNavigator: () {},
+                  ),
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.cartShopping),
+                    tileText: 'My Orders',
+                    tileNavigator: () {},
+                  ),
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.heart),
+                    tileText: 'Favorites',
+                    tileNavigator: () {},
+                  ),
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.truck),
+                    tileText: 'Delivery',
+                    tileNavigator: () {},
+                  ),
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.shop),
+                    tileText: 'My Shops',
+                    tileNavigator: () {},
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      isDarkMode ? FontAwesomeIcons.moon : FontAwesomeIcons.sun,
+                    ),
+                    // Icon(isDarkMode ? Icons.brightness_3 : Icons.sunny),
+                    title: Row(
+                      children: [
+                        Text(
+                          isDarkMode ? "Dark mode" : "Light mode",
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        Consumer(builder: (context, ref, child) {
+                          return Transform.scale(
+                            scale: 0.7,
+                            child: Switch(
+                              activeColor: Colors.yellow,
+                              onChanged: (value) {
+                                ref.read(appThemeProvider.notifier).state =
+                                    value;
+                              },
+                              value: isDarkMode,
+                            ),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
+                  CustomSizedBox(
+                    boxHeight: MediaQuery.of(context).size.height * 0.2,
+                    boxWidth: MediaQuery.of(context).size.width,
+                  ),
+                  CustomListTile(
+                    tileIcon: const Icon(FontAwesomeIcons.gear),
+                    tileText: 'Settings',
+                    tileNavigator: () {
+                      AppDrawer.of(context)?.close();
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+}
+
+class CustomListTile extends StatelessWidget {
+  final Icon tileIcon;
+  final String tileText;
+  final VoidCallback tileNavigator;
+  const CustomListTile({
+    required this.tileIcon,
+    required this.tileText,
+    required this.tileNavigator,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: tileNavigator,
+      child: ListTile(
+        leading: tileIcon,
+        title: Text(
+          tileText,
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+      ),
+    );
+  }
+}
+
+class CustomSizedBox extends StatelessWidget {
+  final double boxWidth;
+  final double boxHeight;
+  const CustomSizedBox({
+    required this.boxHeight,
+    required this.boxWidth,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        width: boxWidth,
+        height: boxHeight,
+        child: const Padding(
+          padding: EdgeInsets.only(left: 74, right: 0),
+          child: Divider(color: Colors.transparent),
+        ));
   }
 }
