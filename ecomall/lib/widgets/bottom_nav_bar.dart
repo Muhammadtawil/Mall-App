@@ -1,67 +1,56 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class BottomNavBarWidget extends StatefulWidget {
-  const BottomNavBarWidget({super.key});
+class CustomerNavBar extends StatelessWidget {
+  const CustomerNavBar({
+    super.key,
+    required this.isDarkMode,
+  });
 
-  @override
-  State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
-}
+  final bool isDarkMode;
 
-class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      elevation: 1,
-      //bottom navigation bar on scaffold
-      color: const Color.fromARGB(255, 236, 234, 234),
-      shape: const CircularNotchedRectangle(), //shape of notch
-      notchMargin: 5, //notche margin between floating button and bottom appbar
-      child: Row(
-        //children inside bottom appbar
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            icon: const Icon(
-              FontAwesomeIcons.house,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              // Navigator.of(context).pushNamed(HomePage.routeName);
-            },
+    return CurvedNavigationBar(
+      height: MediaQuery.of(context).size.height * 0.07,
+      backgroundColor: isDarkMode ? Colors.black26 : Colors.white,
+      items: <Widget>[
+        GestureDetector(
+          child: Icon(FontAwesomeIcons.house,
+              size: 30, color: isDarkMode ? Colors.white : Colors.black),
+        ),
+        GestureDetector(
+          child: Icon(FontAwesomeIcons.store,
+              size: 30, color: isDarkMode ? Colors.white : Colors.black),
+        ),
+        GestureDetector(
+          child: Icon(FontAwesomeIcons.magnifyingGlass,
+              size: 30, color: isDarkMode ? Colors.white : Colors.black),
+        ),
+        GestureDetector(
+            child: Icon(
+          FontAwesomeIcons.bookmark,
+          size: 30,
+          color: isDarkMode ? Colors.white : Colors.black,
+        )),
+        GestureDetector(
+          child: Icon(
+            FontAwesomeIcons.tags,
+            size: 30,
+            color: isDarkMode ? Colors.white : Colors.black,
           ),
-          IconButton(
-            icon: const Icon(
-              FontAwesomeIcons.fileShield,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              // Navigator.of(context)
-              // .pushReplacementNamed(CollectionScreen.routeName);
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              FontAwesomeIcons.inbox,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              // Provider.of<Auth>(context, listen: false).logout();
-              // Navigator.of(context).pushNamed(CollectionsDropDown.routeName);
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              FontAwesomeIcons.gear,
-              color: Colors.grey,
-            ),
-            onPressed: () {
-              // Navigator.of(context).pushNamed(SettingsScreen.routeName);
-            },
-          ),
-        ],
-      ),
+        )
+      ],
+      onTap: (index) {
+        //Handle button tap
+      },
+      buttonBackgroundColor: isDarkMode
+          ? const Color.fromARGB(255, 88, 167, 153)
+          : Colors.greenAccent,
+      color: isDarkMode
+          ? const Color.fromARGB(255, 41, 41, 41)
+          : const Color.fromARGB(255, 230, 230, 230),
     );
   }
 }

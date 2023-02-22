@@ -15,8 +15,8 @@ class MyHomePage extends ConsumerWidget {
     var isDarkMode = ref.watch(appThemeProvider);
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle.dark,
-      child: Scaffold(
+        value: SystemUiOverlayStyle.dark,
+        child: Scaffold(
           appBar: AppBar(
             systemOverlayStyle: isDarkMode
                 ? SystemUiOverlayStyle.light
@@ -139,7 +139,7 @@ class MyHomePage extends ConsumerWidget {
               ),
             ),
           ),
-          bottomNavigationBar: const BottomNavBarWidget()),
-    );
+          bottomNavigationBar: CustomerNavBar(isDarkMode: isDarkMode),
+        ));
   }
 }
