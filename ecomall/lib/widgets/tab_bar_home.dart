@@ -13,7 +13,7 @@ class HomeTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.17,
+      height: MediaQuery.of(context).size.height * 0.16,
       child: GridView.builder(
         physics: const BouncingScrollPhysics(),
         shrinkWrap: true,
