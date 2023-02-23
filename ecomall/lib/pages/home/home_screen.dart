@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/app_theme_provider.dart';
+import '../../utilis/titles.dart';
 import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/home_grid_items.dart';
 import '../../widgets/main_app_bar.dart';
 import '../../widgets/tab_bar_home.dart';
 
@@ -14,7 +16,8 @@ class MyHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkMode = ref.watch(appThemeProvider);
-
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.dark,
         child: Scaffold(
@@ -27,8 +30,8 @@ class MyHomePage extends ConsumerWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.22,
+                    width: width,
+                    height: height * 0.22,
                     child: VerticalSlider(),
                   ),
                   const TitlesHome(
@@ -52,70 +55,8 @@ class MyHomePage extends ConsumerWidget {
   }
 }
 
-class TitlesHome extends StatelessWidget {
-  const TitlesHome({
-    super.key,
-    required this.title,
-  });
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title, style: Theme.of(context).textTheme.titleLarge),
-          TextButton(onPressed: () {}, child: const Text('See all'))
-        ],
-      ),
-    );
-  }
-}
 
-class HomeGridItems extends StatelessWidget {
-  const HomeGridItems({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.20,
-      child: GridView.builder(
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 6, // The number of items in the grid
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1, // The number of columns in the grid
-          mainAxisSpacing: 10.0, // The spacing between each item vertically
-          crossAxisSpacing: 10.0, // The spacing between each item horizontally
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 2.0,
-              ),
-              color: const Color.fromARGB(
-                255,
-                108,
-                136,
-                110,
-              ),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Center(
-              child: Text('Item $index'), // The content of each item
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
 
 
 
