@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/app_theme_provider.dart';
 import '../../utilis/theme/app_theme.dart';
 import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/tab_bar_home.dart';
 
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -67,6 +68,11 @@ class MyHomePage extends ConsumerWidget {
                     height: MediaQuery.of(context).size.height * 0.22,
                     child: VerticalSlider(),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: HomeTabBar(),
+                  ),
+
                   // CircleAvatar(
                   //   radius: 60,
                   //   backgroundColor: Colors.grey,

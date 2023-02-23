@@ -48,9 +48,7 @@ class CustomerNavBar extends StatelessWidget {
       buttonBackgroundColor: isDarkMode
           ? const Color.fromARGB(255, 88, 167, 153)
           : Colors.greenAccent,
-      color: isDarkMode
-          ? const Color.fromARGB(255, 41, 41, 41)
-          : const Color.fromARGB(255, 230, 230, 230),
+      color: isDarkMode ? Colors.transparent : Colors.transparent,
     );
   }
 }
