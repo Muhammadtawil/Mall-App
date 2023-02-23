@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// ignore: unused_import
+import 'carousel_test.dart';
 import 'providers/app_theme_provider.dart';
 import 'utilis/routes/route.dart';
 import 'utilis/theme/app_theme.dart';
@@ -28,6 +30,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: getAppTheme(context, ref.watch(appThemeProvider)),
       routes: getApplicationRoutes(),
+      // home: const CarouselDemo(),
     );
   }
 }
