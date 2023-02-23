@@ -1,11 +1,11 @@
 import 'package:ecomall/widgets/carousel_top.dart';
-import 'package:ecomall/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/app_theme_provider.dart';
 import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/main_app_bar.dart';
 import '../../widgets/tab_bar_home.dart';
 
 class MyHomePage extends ConsumerWidget {
@@ -43,7 +43,83 @@ class MyHomePage extends ConsumerWidget {
                     title: 'Nearest shops',
                   ),
                   const HomeGridItems(),
-                  // CircleAvatar(
+                ],
+              ),
+            ),
+          ),
+          bottomNavigationBar: CustomerNavBar(isDarkMode: isDarkMode),
+        ));
+  }
+}
+
+class TitlesHome extends StatelessWidget {
+  const TitlesHome({
+    super.key,
+    required this.title,
+  });
+  final String title;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.titleLarge),
+          TextButton(onPressed: () {}, child: const Text('See all'))
+        ],
+      ),
+    );
+  }
+}
+
+class HomeGridItems extends StatelessWidget {
+  const HomeGridItems({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.20,
+      child: GridView.builder(
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: 6, // The number of items in the grid
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 1, // The number of columns in the grid
+          mainAxisSpacing: 10.0, // The spacing between each item vertically
+          crossAxisSpacing: 10.0, // The spacing between each item horizontally
+        ),
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 2.0,
+              ),
+              color: const Color.fromARGB(
+                255,
+                108,
+                136,
+                110,
+              ),
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            child: Center(
+              child: Text('Item $index'), // The content of each item
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+
+          // CircleAvatar(
                   //   radius: 60,
                   //   backgroundColor: Colors.grey,
                   //   child: Padding(
@@ -117,128 +193,3 @@ class MyHomePage extends ConsumerWidget {
                   //     style: Theme.of(context).textTheme.titleSmall,
                   //   ),
                   // ),
-                ],
-              ),
-            ),
-          ),
-          bottomNavigationBar: CustomerNavBar(isDarkMode: isDarkMode),
-        ));
-  }
-}
-
-class MainAppBar extends StatelessWidget with PreferredSizeWidget {
-  const MainAppBar({
-    super.key,
-    required this.isDarkMode,
-  });
-
-  final bool isDarkMode;
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      systemOverlayStyle:
-          isDarkMode ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
-      elevation: 0,
-      title: Text(
-        'Malleco',
-        style: Theme.of(context).textTheme.titleLarge,
-      ),
-      centerTitle: true,
-      leading: Consumer(
-        builder: (context, ref, child) => IconButton(
-            onPressed: () {
-              AppDrawer.of(context)?.toggle();
-            },
-            icon: const Icon(
-              Icons.menu,
-              size: 30,
-            )),
-      ),
-      actions: const [
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage(
-              'assets/leb.png',
-            ),
-            backgroundColor: Colors.white,
-            radius: 15,
-            // child: Image.asset(
-            //   'assets/leb.png',
-            //   fit: BoxFit.cover,
-            // ),
-          ),
-        )
-      ],
-    );
-  }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-}
-
-class TitlesHome extends StatelessWidget {
-  const TitlesHome({
-    super.key,
-    required this.title,
-  });
-  final String title;
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(title, style: Theme.of(context).textTheme.titleLarge),
-          TextButton(onPressed: () {}, child: const Text('See all'))
-        ],
-      ),
-    );
-  }
-}
-
-class HomeGridItems extends StatelessWidget {
-  const HomeGridItems({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.20,
-      child: GridView.builder(
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 6, // The number of items in the grid
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1, // The number of columns in the grid
-          mainAxisSpacing: 10.0, // The spacing between each item vertically
-          crossAxisSpacing: 10.0, // The spacing between each item horizontally
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Colors.black,
-                width: 2.0,
-              ),
-              color: const Color.fromARGB(
-                255,
-                108,
-                136,
-                110,
-              ),
-              borderRadius: BorderRadius.circular(20.0),
-            ),
-            child: Center(
-              child: Text('Item $index'), // The content of each item
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
