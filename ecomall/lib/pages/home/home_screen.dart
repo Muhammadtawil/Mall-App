@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../providers/app_theme_provider.dart';
 import '../../utilis/theme/app_theme.dart';
-import '../../widgets/bottom_nav_bar.dart';
+import '../../widgets/customerbottom_nav_bar.dart';
 
 class MyHomePage extends ConsumerWidget {
   const MyHomePage({Key? key}) : super(key: key);
