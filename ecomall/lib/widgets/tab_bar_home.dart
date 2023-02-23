@@ -4,11 +4,11 @@ class HomeTabBar extends StatelessWidget {
   HomeTabBar({super.key});
 
   final List<String> categories = [
-    'DarazMall',
-    'Flash Sales',
-    'Collection',
-    'Vouchers',
-    'Categories'
+    'Clothes',
+    'Furnitures',
+    'Perfumes',
+    'Cars',
+    'Gifts'
   ];
   @override
   Widget build(BuildContext context) {
