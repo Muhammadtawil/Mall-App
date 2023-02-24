@@ -1,4 +1,5 @@
 import 'package:ecomall/widgets/carousel_top.dart';
+import 'package:ecomall/widgets/searchitem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -34,6 +35,7 @@ class MyHomePage extends ConsumerWidget {
                     height: height * 0.22,
                     child: VerticalSlider(),
                   ),
+                  const SearchItem(),
                   const TitlesHome(
                     title: 'Top Ranked Shops',
                   ),
