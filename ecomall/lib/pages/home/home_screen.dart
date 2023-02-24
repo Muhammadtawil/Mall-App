@@ -1,5 +1,5 @@
 import 'package:ecomall/widgets/carousel_top.dart';
-import 'package:ecomall/widgets/searchitem.dart';
+import 'package:ecomall/widgets/searchbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,12 +30,12 @@ class MyHomePage extends ConsumerWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 children: [
+                  const SearchBar(),
                   SizedBox(
                     width: width,
                     height: height * 0.22,
                     child: VerticalSlider(),
                   ),
-                  const SearchItem(),
                   const TitlesHome(
                     title: 'Top Ranked Shops',
                   ),
