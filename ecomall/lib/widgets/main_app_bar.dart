@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'drawer.dart';
 
 class MainAppBar extends StatelessWidget with PreferredSizeWidget {
@@ -33,19 +33,25 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
               size: 30,
             )),
       ),
-      actions: const [
+      actions: [
         Padding(
-          padding: EdgeInsets.all(8.0),
-          child: CircleAvatar(
-            backgroundImage: AssetImage(
-              'assets/leb.png',
-            ),
-            backgroundColor: Colors.white,
-            radius: 15,
-            // child: Image.asset(
-            //   'assets/leb.png',
-            //   fit: BoxFit.cover,
-            // ),
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              IconButton(
+                  onPressed: () {}, icon: const Icon(FontAwesomeIcons.bell)),
+              const CircleAvatar(
+                backgroundImage: AssetImage(
+                  'assets/leb.png',
+                ),
+                backgroundColor: Colors.white,
+                radius: 15,
+                // child: Image.asset(
+                //   'assets/leb.png',
+                //   fit: BoxFit.cover,
+                // ),
+              ),
+            ],
           ),
         )
       ],
