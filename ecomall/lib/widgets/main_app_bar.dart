@@ -22,7 +22,7 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
         'Shopii',
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      centerTitle: true,
+      // centerTitle: true,
       leading: Consumer(
         builder: (context, ref, child) => IconButton(
             onPressed: () {
@@ -39,7 +39,15 @@ class MainAppBar extends StatelessWidget with PreferredSizeWidget {
           child: Row(
             children: [
               IconButton(
-                  onPressed: () {}, icon: const Icon(FontAwesomeIcons.bell)),
+                onPressed: () {},
+                icon: const Icon(FontAwesomeIcons.bell),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  FontAwesomeIcons.bagShopping,
+                ),
+              ),
               const CircleAvatar(
                 backgroundImage: AssetImage(
                   'assets/leb.png',
