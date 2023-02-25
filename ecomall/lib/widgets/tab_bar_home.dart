@@ -26,7 +26,7 @@ class HomeTabBar extends StatelessWidget {
         itemBuilder: (_, int index) {
           return GestureDetector(
             onTap: () {},
-            child: Column(
+            child: ListView(
               children: <Widget>[
                 const CircleAvatar(
                   backgroundColor: Colors.blue,
